@@ -268,11 +268,18 @@ function checkSquare(x, y, z) {
    } else if (x == 3 && y == 1 && z == "0") {
     ++diagonal_2_0;
    }
+   ++draw;
    if (winner_line_1_X == 3 || winner_line_1_0 == 3 || winner_line_2_X == 3 ||  winner_line_2_0 == 3 || winner_line_3_X == 3 || winner_line_3_0 == 3 || winner_column_1_X == 3 || winner_column_1_0 == 3 || winner_column_2_X == 3 || winner_column_2_0 == 3 || winner_column_3_X == 3 || winner_column_3_0 == 3 || diagonal_1_X == 3 || diagonal_1_0 == 3 || diagonal_2_X == 3 || diagonal_2_0 == 3) {
     stopGame();
     restartButton_Win();
+    draw = 0;
+   }
+   if (draw == 9) {
+    stopGame();
+    restartButton_Draw();
    }
 }
+
 
 function stopGame() {
     document.addEventListener("click", handler, true);
@@ -287,6 +294,12 @@ function stopGame() {
 function restartButton_Win() {
     let btn = document.createElement("button");
      btn.innerHTML = '<button onclick="restartGame()">WINNER <img src="https://img.icons8.com/3d-plastilina/69/null/restart--v1.png"/></button>';
+     document.getElementById("restartButton").appendChild(btn);
+}
+
+function restartButton_Draw() {
+    let btn = document.createElement("button");
+     btn.innerHTML = '<button onclick="restartGame()">DRAW <img src="https://img.icons8.com/3d-plastilina/69/null/restart--v1.png"/></button>';
      document.getElementById("restartButton").appendChild(btn);
 }
 
